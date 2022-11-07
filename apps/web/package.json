@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "__build__": "next build",
+    "build": "cd ../.. && npx turbo run build --scope=web --include-dependencies --no-deps",
     "start": "next start",
     "lint": "next lint"
   },
