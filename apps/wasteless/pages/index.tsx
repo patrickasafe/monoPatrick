@@ -1,58 +1,56 @@
-import { Table } from "cyber-ui";
-
-export interface IColumnType<T> {
-  key: string;
-  title: string;
-  width?: number;
-  render?: (column: IColumnType<T>, item: T) => void;
-}
-
-interface Props<T> {
-  data: T[];
-  columns: IColumnType<T>[];
-}
+import { Refrigerator, Table, HeaderTitle, LayoutContainer } from "cyber-ui";
+import { useState } from "react";
 
 const data = {
   data: [
     {
       product: "Bife bovino",
-      expiration: "12-12-22"
+      expiration: "12-12-22",
     },
     {
       product: "Bife bovino",
-      expiration: "12-12-22"
+      expiration: "12-12-22",
     },
     {
       product: "Bife bovino",
-      expiration: "12-12-22"
-    }
+      expiration: "12-12-22",
+    },
   ],
   columns: [
     {
       key: "product",
-      title: "Produto"
+      title: "Produto",
     },
     {
       key: "expiration",
-      title: "Validade"
-    }
-  ]
+      title: "Validade",
+    },
+  ],
 };
 
 export default function Home() {
+  const [tableData, setTableData] = useState(data);
+
   return (
     <div>
-      <span>
-        Produtos a vencer
-        <input placeholder="produto" />
-      </span>
-      <span>Data de Validade</span>
+      <LayoutContainer>
+        <HeaderTitle>WASTELESS</HeaderTitle>
+        <Refrigerator />
+      </LayoutContainer>
+      <div id="body">
+        <span>
+          Produtos a vencer
+          <input placeholder="produto" />
+        </span>
+        <span>Data de Validade</span>
 
-      <input placeholder="validade" type="date" />
+        <input placeholder="validade" type="date" />
 
-      <button>ok</button>
-
-      <Table {...data} />
+        <button>ok</button>
+      </div>
+      <div id="Footer">
+        <Table {...tableData} />
+      </div>
     </div>
   );
 }
