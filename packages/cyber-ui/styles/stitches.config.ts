@@ -60,11 +60,4 @@ export const globalStyles = globalCss({
     fontWeight: 400,
     fontSize: "1rem",
   },
-
-  "table, th, td": {
-    border: "1px solid black",
-    borderCollapse: "collapse",
-    paddingInline: "3 3 3 3",
-    padding: "10px",
-  },
 });
