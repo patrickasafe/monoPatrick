@@ -1,4 +1,11 @@
-import { Table, LayoutContainer, Header, HomeContainer } from "cyber-ui";
+import {
+  Table,
+  LayoutContainer,
+  Header,
+  HomeContainer,
+  Input,
+  Button,
+} from "cyber-ui";
 import { useState } from "react";
 
 const data = {
@@ -35,20 +42,15 @@ export default function Home() {
     <div>
       <LayoutContainer>
         <Header />
+        <span style={{ fontSize: "24px", margin: "1.5rem" }}>
+          Evite desperdícios, adicione aqui produtos para controle de validade.{" "}
+        </span>
       </LayoutContainer>
       <HomeContainer>
         <form>
-          <div>
-            Produto
-            <input placeholder="produto" />
-          </div>
-          <div>
-            <span>Data de Validade</span>
-
-            <input placeholder="validade" type="date" />
-          </div>
-
-          <button>ok</button>
+          <Input id="product" placeholder="produto" />
+          <Input id="expiration" type="date" placeholder="dd-mm-yyyy" />
+          <Button> Adicionar Produto</Button>
         </form>
 
         <Table {...tableData} />
