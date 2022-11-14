@@ -11,8 +11,8 @@ interface Props<T> {
 
 const TableCell = styled("td", {
   padding: 12,
-  fontSize: 14,
-  color: "gray",
+  fontSize: '1.25rem',
+  color: "white",
 });
 
 export function TableRowCell<T>({ item, column }: Props<T>): JSX.Element {

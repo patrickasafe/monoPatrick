@@ -7,12 +7,12 @@ interface Props<T> {
 }
 
 const TableHeaderCell = styled("th", {
-  backgroundColor: "#f1f1f1",
+  backgroundColor: "$gray4",
   padding: 12,
   fontWeight: 500,
   textAlign: "left",
-  fontSize: 14,
-  color: "#2c3e50",
+  fontSize: "1.5rem",
+  color: "white",
   "&:first-child": {
     borderTopLeftRadius: 12,
   },

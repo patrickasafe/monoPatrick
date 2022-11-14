@@ -11,7 +11,7 @@ interface Props<T> {
 const TableRowItem = styled("tr", {
   cursor: "auto",
   "&:nth-child(odd)": {
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#2b2a33",
   },
   "&:last-child": {
     borderBottomLeftRadius: 12,
