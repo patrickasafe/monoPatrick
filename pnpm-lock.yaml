@@ -44,6 +44,7 @@ importers:
   apps/wasteless:
     specifiers:
       '@babel/core': ^7.0.0
+      '@hookform/resolvers': ^2.9.10
       '@next/font': ^13.0.2
       '@radix-ui/colors': ^0.1.8
       '@stitches/react': 1.2.8
@@ -57,9 +58,12 @@ importers:
       next-themes: ^0.2.1
       react: 18.2.0
       react-dom: 18.2.0
+      react-hook-form: ^7.39.3
       tsconfig: workspace:*
       typescript: 4.8.4
+      zod: ^3.19.1
     dependencies:
+      '@hookform/resolvers': 2.9.10_react-hook-form@7.39.3
       '@next/font': 13.0.2
       '@radix-ui/colors': 0.1.8
       '@stitches/react': 1.2.8_react@18.2.0
@@ -68,6 +72,8 @@ importers:
       next-themes: 0.2.1_r5sq4deac3rmm2d5onhwvomqve
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-hook-form: 7.39.3_react@18.2.0
+      zod: 3.19.1
     devDependencies:
       '@babel/core': 7.20.2
       '@types/node': 17.0.12
@@ -385,6 +391,14 @@ packages:
       use-isomorphic-layout-effect: 1.1.2_fan5qbzahqtxlm5dzefqlqx5ia
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@hookform/resolvers/2.9.10_react-hook-form@7.39.3:
+    resolution: {integrity: sha512-JIL1DgJIlH9yuxcNGtyhsWX/PgNltz+5Gr6+8SX9fhXc/hPbEIk6wPI82nhgvp3uUb6ZfAM5mqg/x7KR7NAb+A==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.39.3_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.7:
@@ -2458,6 +2472,15 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-hook-form/7.39.3_react@18.2.0:
+    resolution: {integrity: sha512-H/vwk1vBf+TiXuyW6+hWz+zCujiDO6NqHlN5sPE/a+NGKKGK95XTM65DZz3NmEgs2M20Wka+g4uv4VD367wDBA==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -2966,3 +2989,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.19.1:
+    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+    dev: false
