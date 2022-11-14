@@ -46,12 +46,12 @@ export const globalStyles = globalCss({
 
   ":focus": {
     outline: 0,
-    boxShadow: "0 0 0 2px $red4",
+    boxShadow: "0 0 0 2px $red",
   },
 
   body: {
-    background: "$gray9",
-    color: "$gray4",
+    background: "$black",
+    color: "$white",
     "-webkit-font-smoothing": "antialiased",
   },
 
