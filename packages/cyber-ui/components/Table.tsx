@@ -19,6 +19,7 @@ const TableWrapper = styled("table", {
   borderCollapse: "collapse",
   border: "none",
   fontFamily: "Anek Telugu",
+  margin: 16,
 });
 
 export function Table<T>({ data, columns }: Props<T>): JSX.Element {

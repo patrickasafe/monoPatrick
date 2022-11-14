@@ -39,7 +39,7 @@ export default function Home() {
       <HomeContainer>
         <form>
           <div>
-            Produtos a vencer
+            Produto
             <input placeholder="produto" />
           </div>
           <div>
