@@ -1,4 +1,5 @@
-import { styled } from "@stitches/react";
+import { styled } from "../styles/stitches.config";
+
 import get from "lodash.get";
 
 import { IColumnType } from "./Table";
@@ -11,7 +12,7 @@ interface Props<T> {
 const TableCell = styled("td", {
   padding: 12,
   fontSize: 14,
-  color: "grey",
+  color: "gray",
 });
 
 export function TableRowCell<T>({ item, column }: Props<T>): JSX.Element {
