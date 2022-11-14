@@ -1,10 +1,4 @@
-import {
-  Refrigerator,
-  Table,
-  HeaderTitle,
-  LayoutContainer,
-  HeaderContainer,
-} from "cyber-ui";
+import { Table, LayoutContainer, Header, HomeContainer } from "cyber-ui";
 import { useState } from "react";
 
 const data = {
@@ -40,25 +34,26 @@ export default function Home() {
   return (
     <div>
       <LayoutContainer>
-        <HeaderContainer>
-          <HeaderTitle>WASTELESS</HeaderTitle>
-          <Refrigerator width={"8rem"} height={"8rem"} fill={"white"} />
-        </HeaderContainer>
+        <Header />
       </LayoutContainer>
-      <div id="body">
-        <span>
-          Produtos a vencer
-          <input placeholder="produto" />
-        </span>
-        <span>Data de Validade</span>
+      <HomeContainer>
+        <form>
+          <div>
+            Produtos a vencer
+            <input placeholder="produto" />
+          </div>
+          <div>
+            <span>Data de Validade</span>
 
-        <input placeholder="validade" type="date" />
+            <input placeholder="validade" type="date" />
+          </div>
 
-        <button>ok</button>
-      </div>
-      <div id="Footer">
+          <button>ok</button>
+        </form>
+
         <Table {...tableData} />
-      </div>
+      </HomeContainer>
+      <div id="Footer"></div>
     </div>
   );
 }
