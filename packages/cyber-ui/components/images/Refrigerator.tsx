@@ -1,4 +1,11 @@
-export const Refrigerator = () => {
+interface Props {
+  width: string;
+  height: string;
+  fill: string;
+  stroke?: string;
+}
+
+export const Refrigerator = ({ width, height, fill, stroke }: Props) => {
   return (
     <svg
       version="1.1"
@@ -6,9 +13,11 @@ export const Refrigerator = () => {
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="25rem"
-      height="25rem"
+      width={width}
+      height={height}
       viewBox="0 0 612 612"
+      fill={fill}
+      stroke={stroke}
       // style="enable-background:new 0 0 612 612;"
       // xml:space="preserve"
     >

@@ -1,4 +1,10 @@
-import { Refrigerator, Table, HeaderTitle, LayoutContainer } from "cyber-ui";
+import {
+  Refrigerator,
+  Table,
+  HeaderTitle,
+  LayoutContainer,
+  HeaderContainer,
+} from "cyber-ui";
 import { useState } from "react";
 
 const data = {
@@ -34,8 +40,10 @@ export default function Home() {
   return (
     <div>
       <LayoutContainer>
-        <HeaderTitle>WASTELESS</HeaderTitle>
-        <Refrigerator />
+        <HeaderContainer>
+          <HeaderTitle>WASTELESS</HeaderTitle>
+          <Refrigerator width={"8rem"} height={"8rem"} fill={"white"} />
+        </HeaderContainer>
       </LayoutContainer>
       <div id="body">
         <span>
