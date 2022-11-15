@@ -10,8 +10,8 @@ interface Props extends Array<ProductPayload> {}
 
 /**
  * This function treats the API payload data to be rendered at Table.
- * @param  {[ProductPayload]} rawDataMock
- * @return {[ProductPayload]} same object, but with a new property called "timeUntilExpire" and the properties using Date type are now formatted to strings
+ * @param  {[Array<ProductPayload>]} rawDataMock
+ * @return {[Array<ProductPayload>]} same object, but with a new property called "timeUntilExpire" and the properties using Date type are now formatted to strings
  */
 export const rawDataTreatment = (rawDataMock: Props) => {
   return rawDataMock.map((element) => {
@@ -20,6 +20,11 @@ export const rawDataTreatment = (rawDataMock: Props) => {
   });
 };
 
+/**
+ * This function iterates over the object and turn every Date property into a string using DD-MM-YY format.
+ * @param  {[ProductPayload]} element
+ * @return {[ProductPayload]} returns a new object without date properties.
+ */
 const ifDateToStringVal = (element: ProductPayload) => {
   const obj = {};
 
@@ -43,10 +48,12 @@ const timeUntilExpireCalculator = (object: ProductPayload) => {
   const date1 = object.expiration;
   const date2 = new Date();
 
-  const diffTime = Math.abs(date1.getTime() - date2.getTime());
+  const diffTime = Math.round(date1.getTime() - date2.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  object["timeUntilExpire"] = `${diffDays} dias`;
+  diffTime > 0
+    ? (object["timeUntilExpire"] = `${diffDays} dias`)
+    : (object["timeUntilExpire"] = "Vencido");
 
   return object;
 };

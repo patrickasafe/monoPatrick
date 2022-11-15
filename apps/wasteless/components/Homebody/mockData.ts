@@ -14,7 +14,7 @@ export const dataFromAPIMock = [
   {
     id: "03",
     product: "Bife bovino",
-    expiration: new Date("2023-10-01T10:00:00.000Z"),
-    addedDate: new Date("2023-10-01T10:00:00.000Z"),
+    expiration: new Date("2021-10-01T10:00:00.000Z"),
+    addedDate: new Date("2021-10-01T10:00:00.000Z"),
   },
 ];
