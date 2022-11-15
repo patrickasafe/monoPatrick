@@ -3,11 +3,11 @@ import { HeaderTitle } from "./HeaderTitle";
 import { Refrigerator } from "./images/Refrigerator";
 
 interface Props {
-  title: string
-  icon: JSX.Element
+  title: string;
+  icon: JSX.Element;
 }
 
-export const Header = ({title, icon}: Props) => {
+export const Header = ({ title, icon }: Props) => {
   return (
     <HeaderContainer>
       <HeaderTitle>{title}</HeaderTitle>
