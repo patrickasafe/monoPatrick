@@ -2,11 +2,16 @@ import { HeaderContainer } from "./HeaderContainer";
 import { HeaderTitle } from "./HeaderTitle";
 import { Refrigerator } from "./images/Refrigerator";
 
-export const Header = () => {
+interface Props {
+  title: string
+  icon: JSX.Element
+}
+
+export const Header = ({title, icon}: Props) => {
   return (
     <HeaderContainer>
-      <HeaderTitle>WASTELESS</HeaderTitle>
-      <Refrigerator width={"8rem"} height={"8rem"} fill={"white"} />
+      <HeaderTitle>{title}</HeaderTitle>
+      {icon}
     </HeaderContainer>
   );
 };

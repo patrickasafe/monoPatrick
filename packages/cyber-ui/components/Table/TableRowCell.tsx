@@ -1,8 +1,8 @@
-import { styled } from "../styles/stitches.config";
+import { styled } from "../../styles/stitches.config";
 
 import get from "lodash.get";
 
-import { IColumnType } from "./Table";
+import { IColumnType } from ".";
 
 interface Props<T> {
   item: T;
@@ -11,7 +11,7 @@ interface Props<T> {
 
 const TableCell = styled("td", {
   padding: 12,
-  fontSize: '1.25rem',
+  fontSize: "1.25rem",
   color: "white",
 });
 

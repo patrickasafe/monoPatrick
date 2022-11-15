@@ -1,4 +1,4 @@
-import { styled } from "../styles/stitches.config";
+import { styled } from "../../styles/stitches.config";
 
 import { TableHeader } from "./TableHeader";
 import { TableRow } from "./TableRow";
@@ -23,6 +23,12 @@ const TableWrapper = styled("table", {
 });
 
 export function Table<T>({ data, columns }: Props<T>): JSX.Element {
+  const deleteRow = (rowNumber) => {
+    let copy = [...tableData.data];
+    copy = copy.filter((item, index) => rowNumber != index);
+    setTableData(copy);
+  };
+
   return (
     <TableWrapper>
       <thead>

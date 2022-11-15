@@ -1,6 +1,6 @@
-import { styled } from "../styles/stitches.config";
+import { styled } from "../../styles/stitches.config";
 
-import { IColumnType } from "./Table";
+import { IColumnType } from ".";
 
 interface Props<T> {
   columns: IColumnType<T>[];

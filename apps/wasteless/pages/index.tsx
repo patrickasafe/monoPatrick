@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Layout } from "../components/Layout";
 
 type Column = {
   key: string;
@@ -103,13 +104,11 @@ interface Product {
 }
 
 export default function Home() {
-
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
     resolver: zodResolver(newProductFormValidationSchema),
   });
@@ -139,20 +138,13 @@ export default function Home() {
 
   return (
     <div>
-      <LayoutContainer>
-        <Header />
-        <span style={{ fontSize: "24px", margin: "1.5rem" }}>
-          Evite desperdícios, adicione aqui produtos para controle de validade.{" "}
-        </span>
-      </LayoutContainer>
+      <Layout />
       <HomeContainer>
         <form onSubmit={handleSubmit(handleCreateNewProduct)}>
           <Input {...register("product")} />
-          {errors.product?.message && <span>{errors.product?.message}</span>}
+          {errors.product?.message}
           <Input {...register("expiration")} type="date" />
-          {errors.expiration?.message && (
-            <span>{errors.expiration?.message}</span>
-          )}
+          {errors.expiration?.message}
           <Button> Adicionar Produto</Button>
         </form>
 
