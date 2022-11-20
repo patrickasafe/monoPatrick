@@ -23,11 +23,11 @@ const TableWrapper = styled("table", {
 });
 
 export function Table<T>({ data, columns }: Props<T>): JSX.Element {
-  const deleteRow = (rowNumber) => {
-    let copy = [...tableData.data];
-    copy = copy.filter((item, index) => rowNumber != index);
-    setTableData(copy);
-  };
+  // const deleteRow = (rowNumber) => {
+  //   let copy = [...tableData.data];
+  //   copy = copy.filter((item, index) => rowNumber != index);
+  //   setTableData(copy);
+  // };
 
   return (
     <TableWrapper>

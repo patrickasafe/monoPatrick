@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
 import { Button, HomeContainer, Input, Table } from "cyber-ui";
-import { dataFromAPIMock } from "./mockData";
+import { dataFromAPIMock } from "../../data/mockData";
 import { rawDataTreatment } from "../../utils/payloadTreatment";
 
 type Column = {

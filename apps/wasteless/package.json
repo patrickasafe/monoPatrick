@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@next/font": "^13.0.2",
     "@radix-ui/colors": "^0.1.8",
     "@stitches/react": "1.2.8",
+    "@testing-library/dom": "^8.19.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "cyber-ui": "workspace:*",
     "next": "13.0.0",
     "next-themes": "^0.2.1",
@@ -26,9 +31,12 @@
     "@types/node": "17.0.12",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
     "eslint": "8.27.0",
     "eslint-config-custom": "workspace:*",
+    "jsdom": "^20.0.2",
     "tsconfig": "workspace:*",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "vitest": "^0.25.2"
   }
 }
