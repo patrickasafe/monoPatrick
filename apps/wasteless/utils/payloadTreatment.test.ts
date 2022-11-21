@@ -54,7 +54,9 @@ export const dataFromAPIMockAfterTreatment = [
 describe("dateToString function test", () => {
   test("Should turn a Date format into a string DD/MM/YY", () => {
     let fixtureDate = dataFromAPIMock;
-    expect(rawDataTreatment(fixtureDate, new Date("2022-11-20") )).toStrictEqual(dataFromAPIMockAfterTreatment);
+    expect(rawDataTreatment(fixtureDate, new Date("2022-11-20"))).toStrictEqual(
+      dataFromAPIMockAfterTreatment
+    );
   });
 
   test("Should modify an object and inject a 'timeUntilExpire' property", () => {

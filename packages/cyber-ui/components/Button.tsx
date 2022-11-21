@@ -1,7 +1,18 @@
+import { PrimitiveButtonProps } from "@radix-ui/react-popover";
+import { Trash } from "phosphor-react";
 import { styled } from "../styles/stitches.config";
 
-export const Button = styled("button", {
-  width: "100%",
+export const BaseButton = styled("button", {
+  variants: {
+    width: {
+      fullWidth: {
+        width: "100%",
+      },
+      adaptableWidth: {
+        width: "min-content",
+      },
+    },
+  },
   border: 0,
   padding: "1rem",
   borderRadius: "16px",
@@ -20,3 +31,13 @@ export const Button = styled("button", {
     cursor: "not-allowed",
   },
 });
+
+interface DeleteButtonProps extends PrimitiveButtonProps {}
+
+export const DeleteButton = ({ ...rest }: DeleteButtonProps) => {
+  return (
+    <BaseButton width="adaptableWidth" {...rest}>
+      <Trash size={32} />
+    </BaseButton>
+  );
+};

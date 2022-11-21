@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
-import { Button, HomeContainer, Input, Table } from "cyber-ui";
+import { BaseButton, HomeContainer, Input, Table } from "cyber-ui";
 import { dataFromAPIMock } from "../../data/mockData";
 import { rawDataTreatment } from "../../utils/payloadTreatment";
 
@@ -19,13 +19,21 @@ export interface ProductPayload {
   addedDate: Date;
 }
 
-interface APIPayload {
-  data: ProductPayload[];
+export type ProductTreated = {
+  id: string;
+  product: string;
+  expiration: string;
+  addedDate: string;
+  timeUntilExpire: string;
+};
+
+export interface APIPayload {
+  data: Array<ProductTreated>;
   columns: Column[];
 }
 
 const cookedDataMock = rawDataTreatment(dataFromAPIMock);
-// console.log(cookedDataMock);
+console.log(cookedDataMock);
 
 const tableDataMock: APIPayload = {
   data: cookedDataMock,
@@ -84,13 +92,9 @@ export const HomeBody = () => {
     resolver: zodResolver(newProductFormValidationSchema),
   });
 
-  const [tableData, setTableData] = useState(tableDataMock);
+  const [tableData, setTableData] = useState(tableDataMock.data);
 
   const handleCreateNewProduct = (data: NewProductFormData) => {
-    alert(JSON.stringify(data));
-
-    console.log("teste");
-
     const id = String(new Date().getTime());
     const newProduct: ProductPayload = {
       id,
@@ -99,10 +103,7 @@ export const HomeBody = () => {
       addedDate: new Date(),
     };
 
-    setTableData({
-      columns: tableData.columns,
-      data: [...tableData.data, ...rawDataTreatment([newProduct])],
-    });
+    setTableData([...tableData, ...rawDataTreatment([newProduct])]);
 
     reset();
   };
@@ -114,10 +115,14 @@ export const HomeBody = () => {
         {errors.product?.message}
         <Input {...register("expiration")} type="date" />
         {errors.expiration?.message}
-        <Button> Adicionar Produto</Button>
+        <BaseButton width={"fullWidth"}> Adicionar Produto</BaseButton>
       </form>
 
-      <Table {...tableData} />
+      <Table
+        data={tableData}
+        columns={tableDataMock.columns}
+        setData={setTableData}
+      />
     </HomeContainer>
   );
 };

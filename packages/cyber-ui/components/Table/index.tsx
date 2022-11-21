@@ -1,3 +1,4 @@
+import { SetStateAction } from "react";
 import { styled } from "../../styles/stitches.config";
 
 import { TableHeader } from "./TableHeader";
@@ -13,6 +14,7 @@ export interface IColumnType<T> {
 interface Props<T> {
   data: T[];
   columns: IColumnType<T>[];
+  setData: (value: SetStateAction<T>) => void;
 }
 
 const TableWrapper = styled("table", {
@@ -22,20 +24,14 @@ const TableWrapper = styled("table", {
   margin: 16,
 });
 
-export function Table<T>({ data, columns }: Props<T>): JSX.Element {
-  // const deleteRow = (rowNumber) => {
-  //   let copy = [...tableData.data];
-  //   copy = copy.filter((item, index) => rowNumber != index);
-  //   setTableData(copy);
-  // };
-
+export function Table<T>({ data, columns, setData }: Props<T>): JSX.Element {
   return (
     <TableWrapper>
       <thead>
         <TableHeader columns={columns} />
       </thead>
       <tbody>
-        <TableRow data={data} columns={columns} />
+        <TableRow data={data} columns={columns} setData={setData} />
       </tbody>
     </TableWrapper>
   );

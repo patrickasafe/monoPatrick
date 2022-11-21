@@ -2,10 +2,12 @@ import { styled } from "../../styles/stitches.config";
 
 import { IColumnType } from ".";
 import { TableRowCell } from "./TableRowCell";
+import { SetStateAction } from "react";
 
 interface Props<T> {
   data: T[];
   columns: IColumnType<T>[];
+  setData: (value: SetStateAction<T>) => void;
 }
 
 const TableRowItem = styled("tr", {
@@ -19,18 +21,32 @@ const TableRowItem = styled("tr", {
   },
 });
 
-export function TableRow<T>({ data, columns }: Props<T>): JSX.Element {
+export function TableRow<T>({
+  data,
+  columns,
+  setData: setTableData,
+}: Props<T>): JSX.Element {
   return (
     <>
       {data?.map((item, itemIndex) => (
         <TableRowItem key={`table-body-${itemIndex}`}>
-          {columns.map((column, columnIndex) => (
-            <TableRowCell
-              key={`table-row-cell-${columnIndex}`}
-              item={item}
-              column={column}
-            />
-          ))}
+          {columns.map((column, columnIndex) => {
+            const deleteRow = () => {
+              let copy = [...data];
+              copy = copy.filter((_item, index) => itemIndex != index);
+              setTableData(copy);
+            };
+
+            return (
+              <TableRowCell
+                key={`table-row-cell-${columnIndex}`}
+                item={item}
+                column={column}
+                isLastChild={columnIndex + 1 === columns.length ? true : false}
+                deleteRow={deleteRow}
+              />
+            );
+          })}
         </TableRowItem>
       ))}
     </>
