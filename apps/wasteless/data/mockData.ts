@@ -11,7 +11,7 @@ export const dataFromAPIMock: ProductPayload[] = [
     id: "02",
     product: "Ovo",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    addedDate: new Date("2023-10-01T10:00:00.000Z"),
+    addedDate: new Date("2021-10-01T10:00:00.000Z"),
   },
   {
     id: "03",
