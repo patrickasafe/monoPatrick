@@ -19,8 +19,6 @@ const TableCell = styled("td", {
   verticalAlign: "middle",
   textAlign: "center",
 
-  
-
   "a, input, img, button": {
     verticalAlign: "middle",
     display: "inline-block",

@@ -33,7 +33,6 @@ export interface APIPayload {
 }
 
 const cookedDataMock = rawDataTreatment(dataFromAPIMock);
-console.log(cookedDataMock);
 
 const tableDataMock: APIPayload = {
   data: cookedDataMock,
