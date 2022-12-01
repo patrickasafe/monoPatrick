@@ -3,7 +3,6 @@ import { ThemeProvider } from "next-themes";
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
-
 import { queryClient } from "../lib/react-query/queryClient";
 import { darkTheme, globalStyles } from "cyber-ui/styles/stitches.config";
 

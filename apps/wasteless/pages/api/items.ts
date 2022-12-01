@@ -11,26 +11,23 @@ export default async function handler(
   const { method } = req;
 
   if (method === "GET") {
+
     const items = await getItems();
 
     return res.status(200).json(items);
+
   } else if (method === "POST") {
-    const item = await req.body;
 
-    console.log(item)
+    const { name, expiration } = req.body;
 
-    const new_item = {
+    const result = await prisma.item.create({
       data: {
-        name: item.name,
-        expiration: item.expiration,
+        name,
+        expiration,
       },
-    };
-
-    prisma.item.create(new_item);
-
-    return res.status(200).json({
-      created_item: new_item,
     });
+
+    return res.status(200).json(result);
   }
 
   return res.status(404).json({ message: "Route not found" });
