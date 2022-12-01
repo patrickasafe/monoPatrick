@@ -13,20 +13,20 @@ datasource db {
   relationMode      = "prisma"
 }
 
-model User {
-  id         String   @id @default(uuid())
-  email      String   @unique
-  created_at DateTime @default(now())
-  Items      Item[]
-}
+// model User {
+//   id         String   @id @default(uuid())
+//   email      String   @unique
+//   created_at DateTime @default(now())
+//   Items      Item[]
+// }
 
 model Item {
   id         String   @id @default(uuid())
   name       String
   expiration DateTime
   created_at DateTime @default(now())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String
+  // user       User     @relation(fields: [userId], references: [id])
+  // userId     String
 
-  @@index([userId])
+  // @@index([userId])
 }

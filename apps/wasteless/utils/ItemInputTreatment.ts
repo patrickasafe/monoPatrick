@@ -1,45 +1,52 @@
-import { ProductTreated } from "../components/Homebody";
+import { ItemTreated } from "../components/Homebody";
 
-type ProductPayload = {
+type ItemPayload = {
   id: string;
-  product: string;
+  name: string;
   expiration: Date;
-  addedDate: Date;
+  created_at: Date;
   timeUntilExpire?: string;
 };
 
-interface rawDataTreatmentProps extends Array<ProductPayload> {}
+interface ItemInputPayload extends Array<ItemPayload> {}
 
 /**
  * This function treats the API payload data to be rendered at Table.
- * @param  {[Array<ProductPayload>]} rawDataMock
+ * @param  {[Array<ItemPayload>]} itemInputPayload
  * @param {[Date]} todayDate uses today date as default
- * @return {[Array<ProductTreated>]} same object, but with a new property called "timeUntilExpire" and the properties using Date type are now formatted to strings
+ * @return {[Array<ItemTreated>]} same object, but with a new property called "timeUntilExpire" and the properties using Date type are now formatted to strings
  */
-export const rawDataTreatment = (
-  rawDataMock: rawDataTreatmentProps,
+export const itemsInputPayloadTreatment = (
+  itemInputPayload: ItemInputPayload,
   todayDate = new Date()
 ) => {
-  return rawDataMock.map((element) => {
+  return itemInputPayload.map((element) => {
+    if (typeof element.expiration === "string") {
+      element.expiration = new Date(element.expiration);
+    }
+    if (typeof element.created_at === "string") {
+      element.created_at = new Date(element.created_at);
+    }
+
     const temp1 = timeUntilExpireCalculator(element, todayDate);
     return convertObjectsDatesPropertiesToStrings(temp1);
   });
 };
 
-interface convertObjectsDatesPropertiesToStringsProps extends ProductPayload {}
+interface convertObjectsDatesPropertiesToStringsProps extends ItemPayload {}
 
 /**
  * This function iterates over the object and turn every Date property into a string using DD-MM-YY format.
- * @param  {[ProductPayload]} element
- * @return {[ProductTreated]} returns a new object without date properties.
+ * @param  {[ItemPayload]} element
+ * @return {[ItemTreated]} returns a new object without date properties.
  */
 export const convertObjectsDatesPropertiesToStrings = (
   element: convertObjectsDatesPropertiesToStringsProps
 ) => {
-  const obj = {} as ProductTreated;
+  const obj = {} as ItemTreated;
 
   for (let [key, value] of Object.entries(element)) {
-    //validator if property is inheirited
+    //validator if property is inherited
     if (!element.hasOwnProperty(key)) continue;
     typeof value == typeof new Date()
       ? //TODO: check this types below
@@ -49,7 +56,7 @@ export const convertObjectsDatesPropertiesToStrings = (
   return obj;
 };
 
-interface timeUntilExpireCalculatorProps extends ProductPayload {
+interface timeUntilExpireCalculatorProps extends ItemPayload {
   expiration: Date;
 }
 
@@ -57,14 +64,18 @@ interface timeUntilExpireCalculatorProps extends ProductPayload {
  * This function create | update a object with a property called "expiration".
  * @param  {[timeUntilExpireCalculatorProps]} object
  * @param {[Date]} todayDate uses today date as default
- * @return {[ProductPayload]} the object, but with "timeUntilExpire" property created/updated
+ * @return {[ItemPayload]} the object, but with "timeUntilExpire" property created/updated
  */
 export const timeUntilExpireCalculator = (
   object: timeUntilExpireCalculatorProps,
   todayDate = new Date()
 ) => {
   const result = object;
-  const expiration = object.expiration;
+  let expiration: string | Date;
+
+  typeof object.expiration === "string"
+    ? (expiration = new Date(object.expiration))
+    : (expiration = object.expiration);
 
   const diffTime = Math.round(expiration.getTime() - todayDate.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));

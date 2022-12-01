@@ -1,46 +1,46 @@
-import { ProductPayload, ProductTreated } from "../components/Homebody";
+import { ItemInput, ItemTreated } from "../components/Homebody";
 
-export const dataFromAPIMock: ProductPayload[] = [
+export const dataFromAPIMock: ItemInput[] = [
   {
     id: "01",
-    product: "Bife acebolado",
+    name: "Bife acebolado",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    addedDate: new Date("2021-10-01T10:00:00.000Z"),
+    created_at: new Date("2021-10-01T10:00:00.000Z"),
   },
   {
     id: "02",
-    product: "Ovo",
+    name: "Ovo",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    addedDate: new Date("2021-10-01T10:00:00.000Z"),
+    created_at: new Date("2021-10-01T10:00:00.000Z"),
   },
   {
     id: "03",
-    product: "Carne de lobisomem",
+    name: "Carne de lobisomem",
     expiration: new Date("2021-10-01T10:00:00.000Z"),
-    addedDate: new Date("2021-10-01T10:00:00.000Z"),
+    created_at: new Date("2021-10-01T10:00:00.000Z"),
   },
 ];
 
-export const dataFromAPIMockAfterTreatment: ProductTreated[] = [
+export const dataFromAPIMockAfterTreatment: ItemTreated[] = [
   {
     id: "01",
-    product: "Bife acebolado",
+    name: "Bife acebolado",
     expiration: "01/10/2023",
-    addedDate: "01/10/2021",
+    created_at: "01/10/2021",
     timeUntilExpire: "316 dias",
   },
   {
     id: "02",
-    product: "Ovo",
+    name: "Ovo",
     expiration: "01/10/2023",
-    addedDate: "01/10/2021",
+    created_at: "01/10/2021",
     timeUntilExpire: "316 dias",
   },
   {
     id: "03",
-    product: "Carne de lobisomem",
+    name: "Carne de lobisomem",
     expiration: "01/10/2021",
-    addedDate: "01/10/2021",
+    created_at: "01/10/2021",
     timeUntilExpire: "Vencido",
   },
 ];

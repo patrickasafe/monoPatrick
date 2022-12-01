@@ -11,22 +11,25 @@ export default async function handler(
   const { method } = req;
 
   if (method === "GET") {
-    const items = getItems()
+    const items = await getItems();
 
-    return res.status(200).json({
-      data: items,
-    });
+    return res.status(200).json(items);
   } else if (method === "POST") {
-    const { item } = req.body;
+    const item = await req.body;
 
-    await prisma.user.create({
+    console.log(item)
+
+    const new_item = {
       data: {
-        item,
+        name: item.name,
+        expiration: item.expiration,
       },
-    });
+    };
+
+    prisma.item.create(new_item);
 
     return res.status(200).json({
-      data: item,
+      created_item: new_item,
     });
   }
 

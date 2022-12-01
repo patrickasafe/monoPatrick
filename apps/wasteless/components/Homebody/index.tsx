@@ -5,59 +5,55 @@ import * as zod from "zod";
 
 import { BaseButton, HomeContainer, Input, Table } from "cyber-ui";
 import { dataFromAPIMock } from "../../data/mockData";
-import { rawDataTreatment } from "../../utils/payloadTreatment";
+import { itemsInputPayloadTreatment } from "../../utils/ItemInputTreatment";
+import { axiosInstance } from "../../lib/axiosInstance";
+import { useItems } from "../../hooks/useItems";
+import useCreateItemMutation from "../../hooks/useCreateItemMutation";
 
 type Column = {
   key: string;
   title: string;
 };
 
-export interface ProductPayload {
-  id: string;
-  product: string;
+export interface ItemOutput {
+  name: string;
   expiration: Date;
-  addedDate: Date;
 }
 
-export type ProductTreated = {
+export interface ItemInput extends ItemOutput {
   id: string;
-  product: string;
+  created_at: Date;
+}
+
+export type ItemTreated = {
+  id: string;
+  name: string;
   expiration: string;
-  addedDate: string;
+  created_at: string;
   timeUntilExpire: string;
 };
 
-export interface APIPayload {
-  data: Array<ProductTreated>;
-  columns: Column[];
-}
+const tableColumnMock: Column[] = [
+  {
+    key: "name",
+    title: "Produto",
+  },
+  {
+    key: "expiration",
+    title: "Validade",
+  },
+  {
+    key: "created_at",
+    title: "Data de criação",
+  },
+  {
+    key: "timeUntilExpire",
+    title: "Dias até vencer",
+  },
+];
 
-const cookedDataMock = rawDataTreatment(dataFromAPIMock);
-
-const tableDataMock: APIPayload = {
-  data: cookedDataMock,
-  columns: [
-    {
-      key: "product",
-      title: "Produto",
-    },
-    {
-      key: "expiration",
-      title: "Validade",
-    },
-    {
-      key: "addedDate",
-      title: "Data de criação",
-    },
-    {
-      key: "timeUntilExpire",
-      title: "Dias até vencer",
-    },
-  ],
-};
-
-const newProductFormValidationSchema = zod.object({
-  product: zod
+const newItemFormValidationSchema = zod.object({
+  name: zod
     .string({
       required_error: "Por favor, escreva um nome",
       invalid_type_error: "Esse nome não é válido",
@@ -79,7 +75,7 @@ const newProductFormValidationSchema = zod.object({
   ),
 });
 
-type NewProductFormData = zod.infer<typeof newProductFormValidationSchema>;
+type NewItemFormData = zod.infer<typeof newItemFormValidationSchema>;
 
 export const HomeBody = () => {
   const {
@@ -88,30 +84,28 @@ export const HomeBody = () => {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: zodResolver(newProductFormValidationSchema),
+    resolver: zodResolver(newItemFormValidationSchema),
   });
 
-  const [tableData, setTableData] = useState(tableDataMock.data);
+  const [tableData, setTableData] = useItems();
+  const mutate = useCreateItemMutation();
 
-  const handleCreateNewProduct = (data: NewProductFormData) => {
-    const id = String(new Date().getTime());
-    const newProduct: ProductPayload = {
-      id,
-      product: data.product,
+  const handleCreateNewItem = (data: NewItemFormData) => {
+    const newItem: ItemOutput = {
+      name: data.name,
       expiration: data.expiration,
-      addedDate: new Date(),
     };
 
-    setTableData([...tableData, ...rawDataTreatment([newProduct])]);
+    mutate(newItem);
 
     reset();
   };
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewProduct)}>
-        <Input {...register("product")} />
-        {errors.product?.message}
+      <form onSubmit={handleSubmit(handleCreateNewItem)}>
+        <Input {...register("name")} />
+        {errors.name?.message}
         <Input {...register("expiration")} type="date" />
         {errors.expiration?.message}
         <BaseButton width={"fullWidth"}> Adicionar Produto</BaseButton>
@@ -119,7 +113,7 @@ export const HomeBody = () => {
 
       <Table
         data={tableData}
-        columns={tableDataMock.columns}
+        columns={tableColumnMock}
         setData={setTableData}
       />
     </HomeContainer>

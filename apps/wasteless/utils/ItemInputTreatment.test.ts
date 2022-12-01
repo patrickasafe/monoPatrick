@@ -2,51 +2,51 @@ import { cleanup } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import {
   convertObjectsDatesPropertiesToStrings,
-  rawDataTreatment,
+  itemsInputPayloadTreatment,
   timeUntilExpireCalculator,
-} from "./payloadTreatment";
+} from "./ItemInputTreatment";
 
 const dataFromAPIMock = [
   {
     id: "01",
-    product: "Bife bovino",
+    name: "Bife bovino",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    addedDate: new Date("2023-10-01T10:00:00.000Z"),
+    created_at: new Date("2023-10-01T10:00:00.000Z"),
   },
   {
     id: "02",
-    product: "Bife bovino",
+    name: "Bife bovino",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    addedDate: new Date("2023-10-01T10:00:00.000Z"),
+    created_at: new Date("2023-10-01T10:00:00.000Z"),
   },
   {
     id: "03",
-    product: "Bife bovino",
+    name: "Bife bovino",
     expiration: new Date("2021-10-01T10:00:00.000Z"),
-    addedDate: new Date("2021-10-01T10:00:00.000Z"),
+    created_at: new Date("2021-10-01T10:00:00.000Z"),
   },
 ];
 
 export const dataFromAPIMockAfterTreatment = [
   {
     id: "01",
-    product: "Bife bovino",
+    name: "Bife bovino",
     expiration: "01/10/2023",
-    addedDate: "01/10/2023",
+    created_at: "01/10/2023",
     timeUntilExpire: "316 dias",
   },
   {
     id: "02",
-    product: "Bife bovino",
+    name: "Bife bovino",
     expiration: "01/10/2023",
-    addedDate: "01/10/2023",
+    created_at: "01/10/2023",
     timeUntilExpire: "316 dias",
   },
   {
     id: "03",
-    product: "Bife bovino",
+    name: "Bife bovino",
     expiration: "01/10/2021",
-    addedDate: "01/10/2021",
+    created_at: "01/10/2021",
     timeUntilExpire: "Vencido",
   },
 ];
@@ -54,9 +54,9 @@ export const dataFromAPIMockAfterTreatment = [
 describe("dateToString function test", () => {
   test("Should turn a Date format into a string DD/MM/YY", () => {
     let fixtureDate = dataFromAPIMock;
-    expect(rawDataTreatment(fixtureDate, new Date("2022-11-20"))).toStrictEqual(
-      dataFromAPIMockAfterTreatment
-    );
+    expect(
+      itemsInputPayloadTreatment(fixtureDate, new Date("2022-11-20"))
+    ).toStrictEqual(dataFromAPIMockAfterTreatment);
   });
 
   test("Should modify an object and inject a 'timeUntilExpire' property", () => {
@@ -71,7 +71,7 @@ describe("dateToString function test", () => {
     let fixtureDate = {
       ...dataFromAPIMock[0],
       expiration: "01/10/2023",
-      addedDate: "01/10/2023",
+      created_at: "01/10/2023",
     };
     expect(
       convertObjectsDatesPropertiesToStrings(dataFromAPIMock[0])
