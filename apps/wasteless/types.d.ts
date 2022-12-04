@@ -1,4 +1,4 @@
-import { NewItemFormData } from "./components/NewItemForm";
+import { NewItemFormData } from "./components/NewItemForm/zodSchema";
 
 export type Column = {
   key: string;

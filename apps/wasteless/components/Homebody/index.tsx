@@ -8,7 +8,6 @@ export const HomeBody = () => {
 
   return (
     <HomeContainer>
-      
       <NewItemForm />
 
       <Table
