@@ -11,13 +11,10 @@ export default async function handler(
   const { method } = req;
 
   if (method === "GET") {
-
     const items = await getItems();
 
     return res.status(200).json(items);
-
   } else if (method === "POST") {
-
     const { name, expiration } = req.body;
 
     const result = await prisma.item.create({

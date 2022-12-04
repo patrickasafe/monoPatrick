@@ -1,4 +1,5 @@
 import { ItemInput, ItemTreated } from "../components/Homebody";
+import { Column } from "../types";
 
 export const dataFromAPIMock: ItemInput[] = [
   {
@@ -42,5 +43,24 @@ export const dataFromAPIMockAfterTreatment: ItemTreated[] = [
     expiration: "01/10/2021",
     created_at: "01/10/2021",
     timeUntilExpire: "Vencido",
+  },
+];
+
+export const tableColumnMock: Column[] = [
+  {
+    key: "name",
+    title: "Produto",
+  },
+  {
+    key: "expiration",
+    title: "Validade",
+  },
+  {
+    key: "created_at",
+    title: "Data de criação",
+  },
+  {
+    key: "timeUntilExpire",
+    title: "Dias até vencer",
   },
 ];
