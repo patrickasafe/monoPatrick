@@ -1,5 +1,5 @@
 import { UseMutateFunction, useMutation, useQueryClient } from "react-query";
-import { ItemOutput } from "../components/Homebody";
+import { ItemOutput } from "../types";
 import { axiosInstance } from "../lib/axiosInstance";
 import { queryKeys } from "../lib/react-query/constants";
 

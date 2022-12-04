@@ -1,4 +1,3 @@
-import { PrimitiveButtonProps } from "@radix-ui/react-popover";
 import { Trash } from "phosphor-react";
 import { styled } from "../styles/stitches.config";
 
@@ -32,7 +31,7 @@ export const BaseButton = styled("button", {
   },
 });
 
-interface DeleteButtonProps extends PrimitiveButtonProps {}
+interface DeleteButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
 export const DeleteButton = ({ ...rest }: DeleteButtonProps) => {
   return (
