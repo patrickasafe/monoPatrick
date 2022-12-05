@@ -122,6 +122,7 @@ importers:
       lodash.get: ^4.4.2
       phosphor-react: ^1.4.1
       react: ^18.2.0
+      react-query: ^3.39.2
       tsconfig: workspace:*
       typescript: ^4.5.2
       vitest: ^0.25.2
@@ -134,6 +135,7 @@ importers:
       '@testing-library/user-event': 14.4.3_aaq3sbffpfe3jnxzm2zngsddei
       lodash.get: 4.4.2
       phosphor-react: 1.4.1_react@18.2.0
+      react-query: 3.39.2_react@18.2.0
     devDependencies:
       '@types/lodash': 4.14.188
       '@types/lodash.get': 4.4.7
@@ -3450,6 +3452,24 @@ packages:
       match-sorter: 6.3.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-query/3.39.2_react@18.2.0:
+    resolution: {integrity: sha512-F6hYDKyNgDQfQOuR1Rsp3VRzJnWHx6aRnnIZHMNGGgbL3SBgpZTDg8MQwmxOgpCAoqZJA+JSNCydF1xGJqKOCA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.20.1
+      broadcast-channel: 3.7.0
+      match-sorter: 6.3.1
+      react: 18.2.0
     dev: false
 
   /react-refresh/0.14.0:
