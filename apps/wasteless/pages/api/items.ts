@@ -25,6 +25,19 @@ export default async function handler(
     });
 
     return res.status(200).json(result);
+  } else if (method === "PATCH") {
+    const { id } = req.body;
+
+    const result = await prisma.item.update({
+      where: {
+        id: id,
+      },
+      data: {
+        deletedAt: new Date()
+      }
+    })
+
+    return res.status(200).json(result)
   }
 
   return res.status(404).json({ message: "Route not found" });
