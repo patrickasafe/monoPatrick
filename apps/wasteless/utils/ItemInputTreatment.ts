@@ -4,11 +4,11 @@ type ItemPayload = {
   id: string;
   name: string;
   expiration: Date;
-  created_at: Date;
+  createdAt: Date;
   timeUntilExpire?: string;
 };
 
-interface ItemInputPayload extends Array<ItemPayload> {}
+interface ItemInputPayload extends Array<ItemPayload> { }
 
 /**
  * This function treats the API payload data to be rendered at Table.
@@ -24,8 +24,8 @@ export const itemsInputPayloadTreatment = (
     if (typeof element.expiration === "string") {
       element.expiration = new Date(element.expiration);
     }
-    if (typeof element.created_at === "string") {
-      element.created_at = new Date(element.created_at);
+    if (typeof element.createdAt === "string") {
+      element.createdAt = new Date(element.createdAt);
     }
 
     const temp1 = timeUntilExpireCalculator(element, todayDate);
@@ -33,7 +33,7 @@ export const itemsInputPayloadTreatment = (
   });
 };
 
-interface convertObjectsDatesPropertiesToStringsProps extends ItemPayload {}
+interface convertObjectsDatesPropertiesToStringsProps extends ItemPayload { }
 
 /**
  * This function iterates over the object and turn every Date property into a string using DD-MM-YY format.
@@ -50,7 +50,7 @@ export const convertObjectsDatesPropertiesToStrings = (
     if (!element.hasOwnProperty(key)) continue;
     typeof value == typeof new Date()
       ? //TODO: check this types below
-        (obj[key] = value.toLocaleDateString("pt-BR"))
+      (obj[key] = value.toLocaleDateString("pt-BR"))
       : (obj[key] = value);
   }
   return obj;

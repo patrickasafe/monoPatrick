@@ -11,19 +11,19 @@ const dataFromAPIMock = [
     id: "01",
     name: "Bife bovino",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    created_at: new Date("2023-10-01T10:00:00.000Z"),
+    createdAt: new Date("2023-10-01T10:00:00.000Z"),
   },
   {
     id: "02",
     name: "Bife bovino",
     expiration: new Date("2023-10-01T10:00:00.000Z"),
-    created_at: new Date("2023-10-01T10:00:00.000Z"),
+    createdAt: new Date("2023-10-01T10:00:00.000Z"),
   },
   {
     id: "03",
     name: "Bife bovino",
     expiration: new Date("2021-10-01T10:00:00.000Z"),
-    created_at: new Date("2021-10-01T10:00:00.000Z"),
+    createdAt: new Date("2021-10-01T10:00:00.000Z"),
   },
 ];
 
@@ -32,21 +32,21 @@ export const dataFromAPIMockAfterTreatment = [
     id: "01",
     name: "Bife bovino",
     expiration: "01/10/2023",
-    created_at: "01/10/2023",
+    createdAt: "01/10/2023",
     timeUntilExpire: "316 dias",
   },
   {
     id: "02",
     name: "Bife bovino",
     expiration: "01/10/2023",
-    created_at: "01/10/2023",
+    createdAt: "01/10/2023",
     timeUntilExpire: "316 dias",
   },
   {
     id: "03",
     name: "Bife bovino",
     expiration: "01/10/2021",
-    created_at: "01/10/2021",
+    createdAt: "01/10/2021",
     timeUntilExpire: "Vencido",
   },
 ];
@@ -71,7 +71,7 @@ describe("dateToString function test", () => {
     let fixtureDate = {
       ...dataFromAPIMock[0],
       expiration: "01/10/2023",
-      created_at: "01/10/2023",
+      createdAt: "01/10/2023",
     };
     expect(
       convertObjectsDatesPropertiesToStrings(dataFromAPIMock[0])

@@ -16,15 +16,16 @@ datasource db {
 // model User {
 //   id         String   @id @default(uuid())
 //   email      String   @unique
-//   created_at DateTime @default(now())
+//   createdAt DateTime @default(now())
 //   Items      Item[]
 // }
 
 model Item {
-  id         String   @id @default(uuid())
+  id         String    @id @default(uuid())
   name       String
   expiration DateTime
-  created_at DateTime @default(now())
+  createdAt  DateTime  @default(now())
+  deletedAt  DateTime?
   // user       User     @relation(fields: [userId], references: [id])
   // userId     String
 
