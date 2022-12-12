@@ -31,9 +31,9 @@ export const BaseButton = styled("button", {
   },
 });
 
-interface DeleteButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const DeleteButton = ({ ...rest }: DeleteButtonProps) => {
+export const DeleteButton = ({ ...rest }: Props) => {
   return (
     <BaseButton width="adaptableWidth" {...rest}>
       <Trash size={32} />

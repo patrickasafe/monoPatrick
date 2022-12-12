@@ -6,7 +6,7 @@ import useSoftDeleteItemMutation from "../../hooks/useSoftDeleteItemMutation";
 
 export const HomeBody = () => {
   const [tableData, setTableData] = useItems();
-  const deleteMutate = useSoftDeleteItemMutation()
+  const deleteMutate = useSoftDeleteItemMutation();
 
   return (
     <HomeContainer>

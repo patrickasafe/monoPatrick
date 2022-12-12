@@ -33,11 +33,11 @@ export default async function handler(
         id: id,
       },
       data: {
-        deletedAt: new Date()
-      }
-    })
+        deletedAt: new Date(),
+      },
+    });
 
-    return res.status(200).json(result)
+    return res.status(200).json(result);
   }
 
   return res.status(404).json({ message: "Route not found" });

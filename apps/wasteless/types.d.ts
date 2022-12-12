@@ -5,7 +5,7 @@ export type Column = {
   title: string;
 };
 
-export interface ItemOutput extends NewItemFormData { }
+export interface ItemOutput extends NewItemFormData {}
 
 export interface ItemInput extends ItemOutput {
   id: string;

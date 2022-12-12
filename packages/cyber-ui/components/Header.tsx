@@ -1,12 +1,12 @@
-import { HeaderContainer } from "./HeaderContainer";
+import { HeaderContainer } from "./containers/HeaderContainer";
 import { HeaderTitle } from "./HeaderTitle";
 
-interface HeaderProps {
+interface Props {
   title: string;
   icon: JSX.Element;
 }
 
-export const Header = ({ title, icon }: HeaderProps) => {
+export const Header = ({ title, icon }: Props) => {
   return (
     <HeaderContainer>
       <HeaderTitle>{title}</HeaderTitle>

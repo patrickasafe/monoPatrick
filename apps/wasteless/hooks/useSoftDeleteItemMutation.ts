@@ -3,9 +3,8 @@ import { axiosInstance } from "../lib/axiosInstance";
 import { queryKeys } from "../lib/react-query/constants";
 
 type ItemID = {
-  id: string
-}
-
+  id: string;
+};
 
 async function deleteItem(data: ItemID): Promise<void> {
   await axiosInstance.patch<ItemID>("items/", data);

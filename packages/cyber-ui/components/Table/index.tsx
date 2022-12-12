@@ -1,5 +1,5 @@
 import { SetStateAction } from "react";
-import { UseMutateFunction } from "react-query"
+import { UseMutateFunction } from "react-query";
 
 import { styled } from "../../styles/stitches.config";
 
@@ -18,7 +18,7 @@ interface Props<T> {
   data: T[];
   columns: IColumnType<T>[];
   setData: (value: SetStateAction<T>) => void;
-  deleteMutate: UseMutateFunction<void, unknown, ItemID, unknown>
+  deleteMutate: UseMutateFunction<void, unknown, ItemID, unknown>;
 }
 
 const TableWrapper = styled("table", {
@@ -28,14 +28,24 @@ const TableWrapper = styled("table", {
   margin: 16,
 });
 
-export function Table<T>({ data, columns, setData, deleteMutate }: Props<T>): JSX.Element {
+export function Table<T>({
+  data,
+  columns,
+  setData,
+  deleteMutate,
+}: Props<T>): JSX.Element {
   return (
     <TableWrapper>
       <thead>
         <TableHeader columns={columns} />
       </thead>
       <tbody>
-        <TableRow data={data} columns={columns} setData={setData} deleteMutate={deleteMutate} />
+        <TableRow
+          data={data}
+          columns={columns}
+          setData={setData}
+          deleteMutate={deleteMutate}
+        />
       </tbody>
     </TableWrapper>
   );

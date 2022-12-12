@@ -9,7 +9,7 @@ interface Props<T> {
   data: T[];
   columns: IColumnType<T>[];
   setData: (value: SetStateAction<T>) => void;
-  deleteMutate: UseMutateFunction<void, unknown, T, unknown>
+  deleteMutate: UseMutateFunction<void, unknown, T, unknown>;
 }
 
 const TableRowItem = styled("tr", {
@@ -27,7 +27,7 @@ export function TableRow<T>({
   data,
   columns,
   setData: setTableData,
-  deleteMutate
+  deleteMutate,
 }: Props<T>): JSX.Element {
   return (
     <>
@@ -35,8 +35,8 @@ export function TableRow<T>({
         <TableRowItem key={`table-body-${itemIndex}`}>
           {columns.map((column, columnIndex) => {
             const deleteRow = () => {
-              const deleteItemID = {id: item.id}
-              deleteMutate(deleteItemID)
+              const deleteItemID = { id: item.id };
+              deleteMutate(deleteItemID);
               let copy = [...data];
               copy = copy.filter((_item, index) => itemIndex != index);
               setTableData(copy);
