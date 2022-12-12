@@ -14,22 +14,22 @@ export const authOptions = {
           id: profile.id.toString(),
           name: profile.name || profile.login,
           username: profile.login,
+          email: profile.email,
+          image: profile.image,
         };
       },
     }),
     // ...add more providers here
   ],
-  // secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-        username: user.username,
-      },
-    }),
+    async session({ session, user }) {
+      session.user.id = user.id;
+      session.user.username = user.username;
+
+      return session;
+    },
   },
 };
 

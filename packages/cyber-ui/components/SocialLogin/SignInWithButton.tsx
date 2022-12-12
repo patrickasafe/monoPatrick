@@ -47,7 +47,10 @@ export const SignInWithButton = ({
   ...rest
 }: Props) => {
   return (
-    <SocialButton onClick={() => signIn(signInKey)} {...rest}>
+    <SocialButton
+      onClick={() => signIn(signInKey, { callbackUrl: "/" })}
+      {...rest}
+    >
       <ButtonText>{buttonText}</ButtonText>
     </SocialButton>
   );

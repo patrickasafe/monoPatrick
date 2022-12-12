@@ -5,9 +5,9 @@ export const Layout = () => {
     <LayoutContainer>
       <Header
         title={"WASTELESS"}
-        icon={Refrigerator({ width: "8rem", height: "8rem", fill: "white" })}
+        icon={Refrigerator({ width: "4rem", height: "4rem", fill: "white" })}
       />
-      <span style={{ fontSize: "24px", margin: "1.5rem" }}>
+      <span style={{ fontSize: "1.25rem", margin: "1.5rem" }}>
         Evite desperdícios, adicione aqui produtos para controle de validade.{" "}
       </span>
     </LayoutContainer>
