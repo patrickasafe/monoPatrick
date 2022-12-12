@@ -4,7 +4,6 @@ export const SocialLoginContainer = styled("div", {
   width: "fit-content",
   margin: "2rem auto",
 
-  background: "gray8",
   borderRadius: "8px",
 
   display: "flex",
@@ -12,7 +11,7 @@ export const SocialLoginContainer = styled("div", {
   justifyContent: "space-between",
   alignItems: "center",
 
-  border: "1px solid white",
+  border: "1px solid $gray9",
 });
 
 export const SocialLoginUp = styled("div", {
@@ -20,7 +19,6 @@ export const SocialLoginUp = styled("div", {
   paddingRight: "2rem",
   paddingLeft: "2rem",
 
-  background: "gray8",
   borderRadius: "8px",
 
   display: "flex",
@@ -39,7 +37,6 @@ export const SocialLoginDown = styled("div", {
 
   marginBottom: "1rem",
 
-  background: "gray8",
   borderRadius: "8px",
 
   display: "flex",

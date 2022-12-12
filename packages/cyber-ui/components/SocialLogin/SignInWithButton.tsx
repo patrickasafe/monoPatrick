@@ -34,12 +34,20 @@ const ButtonText = styled("span", {
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   buttonText: string;
-  Logo: ReactSVG;
+  Logo?: ReactSVG;
+  signInKey: string;
+  signIn: any;
 }
 
-export const SignInWithButton = ({ buttonText, Logo, ...rest }: Props) => {
+export const SignInWithButton = ({
+  buttonText,
+  Logo,
+  signIn,
+  signInKey,
+  ...rest
+}: Props) => {
   return (
-    <SocialButton {...rest}>
+    <SocialButton onClick={() => signIn(signInKey)} {...rest}>
       <ButtonText>{buttonText}</ButtonText>
     </SocialButton>
   );

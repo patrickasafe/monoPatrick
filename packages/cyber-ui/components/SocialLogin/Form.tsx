@@ -6,7 +6,7 @@ export const SocialForm = () => {
     <form>
       <Input placeholder="Email" />
       <Input placeholder="Password" />
-      <SocialButton textAlignment="center">Sign In</SocialButton>
+      <SocialButton textAlignment="center">SIGN IN</SocialButton>
     </form>
   );
 };
