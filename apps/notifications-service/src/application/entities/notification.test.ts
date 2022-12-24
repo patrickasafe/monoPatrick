@@ -7,10 +7,9 @@ describe('Notification content', () => {
       content: new Content('Nova solicitação de amizade'),
       category: 'social',
       recipientId: 'example-recipient-id',
-      crea
     });
 
-    expect(content).toBeTruthy();
+    expect(notification).toBeTruthy();
   });
 
   it('should not be able to create a notification content with less than 5 characters', () => {
