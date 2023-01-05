@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Notification = void 0;
 const node_crypto_1 = require("node:crypto");
 class Notification {
-    constructor(props) {
+    constructor(props, id) {
         var _a;
-        this._id = (0, node_crypto_1.randomUUID)();
+        this._id = id !== null && id !== void 0 ? id : (0, node_crypto_1.randomUUID)();
         this.props = Object.assign(Object.assign({}, props), { createdAt: (_a = props.createdAt) !== null && _a !== void 0 ? _a : new Date() });
     }
     get id() {
@@ -29,8 +29,11 @@ class Notification {
     get category() {
         return this.props.category;
     }
-    set readAt(readAt) {
-        this.props.readAt = readAt;
+    read() {
+        this.props.readAt = new Date();
+    }
+    unread() {
+        this.props.readAt = null;
     }
     get readAt() {
         return this.props.readAt;

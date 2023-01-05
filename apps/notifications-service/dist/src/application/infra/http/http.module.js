@@ -7,6 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpModule = void 0;
+const cancel_notification_1 = require("../../use-cases/cancel-notification");
+const count_recipient_notifications_1 = require("../../use-cases/count-recipient-notifications");
+const get_recipient_notifications_1 = require("../../use-cases/get-recipient-notifications");
+const read_notification_1 = require("../../use-cases/read-notification");
+const unread_notification_1 = require("../../use-cases/unread-notification");
 const common_1 = require("@nestjs/common");
 const send_notification_1 = require("../../use-cases/send-notification");
 const database_module_1 = require("../database/database.module");
@@ -17,7 +22,14 @@ HttpModule = __decorate([
     (0, common_1.Module)({
         imports: [database_module_1.DatabaseModule],
         controllers: [notifications_controller_1.NotificationsController],
-        providers: [send_notification_1.SendNotification],
+        providers: [
+            send_notification_1.SendNotification,
+            cancel_notification_1.CancelNotification,
+            count_recipient_notifications_1.CountRecipientNotifications,
+            get_recipient_notifications_1.GetRecipientNotifications,
+            read_notification_1.ReadNotification,
+            unread_notification_1.UnreadNotification,
+        ],
     })
 ], HttpModule);
 exports.HttpModule = HttpModule;

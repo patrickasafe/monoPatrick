@@ -2,12 +2,12 @@ import { makeNotification } from '@test/factories/notification-factory';
 import { InMemoryNotificationsRepository } from '@test/repositories/in-memory-notifications-repository';
 import { CancelNotification } from './cancel-notification';
 import { NotificationNotFound } from './errors/notification-not-found';
-import { GetRecipientNotification } from './get-recipient-notifications';
+import { GetRecipientNotifications } from './get-recipient-notifications';
 
 describe('Get recipient notifications', () => {
   it('should be able to get recipient notifications', async () => {
     const notificationsRepository = new InMemoryNotificationsRepository();
-    const getRecipientNotifications = new GetRecipientNotification(
+    const getRecipientNotifications = new GetRecipientNotifications(
       notificationsRepository,
     );
 
