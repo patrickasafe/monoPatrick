@@ -1,0 +1,19 @@
+{
+  "name": "json-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "streams/stream-http-server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tsconfig": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4",
+    "@types/node": "^18.11.18"
+  }
+}

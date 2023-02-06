@@ -1,0 +1,17 @@
+{
+  "extends": "tsconfig/base.json",
+  "type": "module",
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "strict": false,
+    "module": "CommonJS",
+    "target": "es2017"
+  },
+}

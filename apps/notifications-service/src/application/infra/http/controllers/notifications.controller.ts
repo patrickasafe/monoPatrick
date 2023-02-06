@@ -17,7 +17,7 @@ export class NotificationsController {
     private unreadNotification: UnreadNotification,
     private countRecipientNotifications: CountRecipientNotifications,
     private getRecipientNotifications: GetRecipientNotifications,
-  ) { }
+  ) {}
 
   @Patch(':id/cancel')
   async cancel(@Param('id') id: string) {

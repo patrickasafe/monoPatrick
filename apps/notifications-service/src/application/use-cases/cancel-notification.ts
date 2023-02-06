@@ -10,7 +10,7 @@ type CancelNotificationResponse = void;
 
 @Injectable()
 export class CancelNotification {
-  constructor(private notificationsRepository: NotificationsRepository) { }
+  constructor(private notificationsRepository: NotificationsRepository) {}
 
   async execute(
     request: CancelNotificationRequest,

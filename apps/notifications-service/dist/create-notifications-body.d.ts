@@ -1,5 +1,5 @@
 export declare class CreateNotificationBody {
-    recipientId: string;
-    content: string;
-    category: string;
+  recipientId: string;
+  content: string;
+  category: string;
 }

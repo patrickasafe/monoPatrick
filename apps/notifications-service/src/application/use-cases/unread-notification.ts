@@ -10,7 +10,7 @@ type UnreadNotificationResponse = void;
 
 @Injectable()
 export class UnreadNotification {
-  constructor(private notificationsRepository: NotificationsRepository) { }
+  constructor(private notificationsRepository: NotificationsRepository) {}
 
   async execute(
     request: UnreadNotificationRequest,

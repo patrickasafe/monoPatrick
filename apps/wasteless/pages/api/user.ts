@@ -7,5 +7,14 @@
 //   req: NextApiRequest,
 //   res: NextApiResponse
 // ) {
-//   const users = await prisma.user.findUnique();
+
+//   const { method } = req
+
+  // if (method === "GET") {
+  //   const user = await prisma.user.findUnique({
+
+  //   });
+
+  // }
+  
 // }

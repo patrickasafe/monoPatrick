@@ -1,13 +1,15 @@
 import { NotificationsRepository } from '../repositories/notifications-repository';
 interface CountRecipientNotificationRequest {
-    recipientId: string;
+  recipientId: string;
 }
 interface CountRecipientNotificationResponse {
-    count: number;
+  count: number;
 }
 export declare class CountRecipientNotifications {
-    private notificationsRepository;
-    constructor(notificationsRepository: NotificationsRepository);
-    execute(request: CountRecipientNotificationRequest): Promise<CountRecipientNotificationResponse>;
+  private notificationsRepository;
+  constructor(notificationsRepository: NotificationsRepository);
+  execute(
+    request: CountRecipientNotificationRequest,
+  ): Promise<CountRecipientNotificationResponse>;
 }
 export {};

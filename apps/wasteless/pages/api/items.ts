@@ -16,11 +16,15 @@ export default async function handler(
     return res.status(200).json(items);
   } else if (method === "POST") {
     const { name, expiration } = req.body;
+    const ownerId = 'cldkrydlv000hucjaandbu7s2'
+
+    console.log(req)
 
     const result = await prisma.item.create({
       data: {
         name,
         expiration,
+        ownerId,
       },
     });
 
@@ -30,7 +34,7 @@ export default async function handler(
 
     const result = await prisma.item.update({
       where: {
-        id: id,
+        id,
       },
       data: {
         deletedAt: new Date(),

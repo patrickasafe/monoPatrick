@@ -1,16 +1,16 @@
 import { Notification } from '../entities/notification';
 import { NotificationsRepository } from '../repositories/notifications-repository';
 interface SendNotificationRequest {
-    recipientId: string;
-    content: string;
-    category: string;
+  recipientId: string;
+  content: string;
+  category: string;
 }
 interface SendNotificationResponse {
-    notification: Notification;
+  notification: Notification;
 }
 export declare class SendNotification {
-    private notificationsRepository;
-    constructor(notificationsRepository: NotificationsRepository);
-    execute(request: SendNotificationRequest): Promise<SendNotificationResponse>;
+  private notificationsRepository;
+  constructor(notificationsRepository: NotificationsRepository);
+  execute(request: SendNotificationRequest): Promise<SendNotificationResponse>;
 }
 export {};

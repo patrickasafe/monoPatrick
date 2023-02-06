@@ -20,4 +20,4 @@ import { NotificationsController } from './controllers/notifications.controller'
     UnreadNotification,
   ],
 })
-export class HttpModule {  }
+export class HttpModule {}
