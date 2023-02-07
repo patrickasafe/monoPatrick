@@ -5,7 +5,7 @@ export const slogans = [
 
   "Quem confere, cuida. Não deixe para checar a validade depois. Pode ser tarde demais",
   
-  "Quem não cuida da validade de seus produtos, mais cedo ou mais tarde, come prejuízo",
+  "Quem não cuida da validade de seus produtos, cedo ou tarde, come prejuízo",
 
   "Ouviu isso? É o som da validade vencendo...",
 
@@ -15,9 +15,7 @@ export const slogans = [
 
   "A vida não têm validade definida. Sua mercadoria, sim!",
 
-  "Hey amigo! Já conferiu a validade hoje? Ainda dá tempo!",
-
-  "Hey amiga! Já conferiu a validade hoje? Ainda dá tempo!",
+  "Hey! Já conferiu a validade hoje? Ainda dá tempo!",
 
   "A validade ainda está rolando, mas é bom conferir para ela não derrubar você",
 

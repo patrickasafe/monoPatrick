@@ -1,11 +1,15 @@
 import { PrismaClient } from "@prisma/client";
+import { getUserId } from "./getUserId";
 
 const prisma = new PrismaClient();
 
-export async function getItems() {
+export async function getItems(sessionToken: string) {
+  const ownerId = getUserId(sessionToken)
+
   const items = await prisma.item.findMany({
     where: {
       deletedAt: null,
+      ...ownerId
     },
     select: {
       id: true,

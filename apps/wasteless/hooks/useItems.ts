@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
-import { ItemInput, ItemTreated } from "../components/Homebody";
 import { axiosInstance } from "../lib/axiosInstance";
 import { queryKeys } from "../lib/react-query/constants";
+import { ItemInput, ItemTreated } from "../types";
 import { itemsInputPayloadTreatment } from "../utils/ItemInputTreatment";
 
 async function getItems(): Promise<ItemInput[] | void> {

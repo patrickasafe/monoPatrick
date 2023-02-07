@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getSessionToken } from "../../lib/getSessionToken";
+import { getUserId } from "../../lib/getUserId";
 import { getItems } from "../../lib/items";
 
 const prisma = new PrismaClient();
@@ -9,22 +11,24 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { method } = req;
+  const cookies = req.cookies
+  const sessionToken = getSessionToken(cookies)
+  const ownerId = await getUserId(sessionToken)
 
   if (method === "GET") {
-    const items = await getItems();
+    const items = await getItems(sessionToken)
 
-    return res.status(200).json(items);
+    return res.status(200).json(items)
+
   } else if (method === "POST") {
-    const { name, expiration } = req.body;
-    const ownerId = 'cldkrydlv000hucjaandbu7s2'
 
-    console.log(req)
+    const { name, expiration } = req.body;
 
     const result = await prisma.item.create({
       data: {
         name,
         expiration,
-        ownerId,
+        ownerId
       },
     });
 
