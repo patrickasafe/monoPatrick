@@ -2,10 +2,7 @@ import { Header, LayoutContainer, Refrigerator } from "cyber-ui";
 import { slogans } from "../data/mayaraSloganIdeas";
 import { Subtitle } from "./Subtitle";
 
-
 export const Layout = () => {
-  
-
   return (
     <LayoutContainer>
       <Header

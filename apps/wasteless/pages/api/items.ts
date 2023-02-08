@@ -11,41 +11,43 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { method } = req;
-  const cookies = req.cookies
-  const sessionToken = getSessionToken(cookies)
-  const ownerId = await getUserId(sessionToken)
+  const cookies = req.cookies;
+  const sessionToken = getSessionToken(cookies);
+  const ownerId = await getUserId(sessionToken);
 
-  if (method === "GET") {
-    const items = await getItems(sessionToken)
+  if (!sessionToken) {
+    return res.status(401).send("Unauthorized");
+  } else {
+    if (method === "GET") {
+      const items = await getItems(sessionToken);
 
-    return res.status(200).json(items)
+      return res.status(200).json(items);
+    } else if (method === "POST") {
+      const { name, expiration } = req.body;
 
-  } else if (method === "POST") {
+      const result = await prisma.item.create({
+        data: {
+          name,
+          expiration,
+          ownerId,
+        },
+      });
 
-    const { name, expiration } = req.body;
+      return res.status(200).json(result);
+    } else if (method === "PATCH") {
+      const { id } = req.body;
 
-    const result = await prisma.item.create({
-      data: {
-        name,
-        expiration,
-        ownerId
-      },
-    });
+      const result = await prisma.item.update({
+        where: {
+          id,
+        },
+        data: {
+          deletedAt: new Date(),
+        },
+      });
 
-    return res.status(200).json(result);
-  } else if (method === "PATCH") {
-    const { id } = req.body;
-
-    const result = await prisma.item.update({
-      where: {
-        id,
-      },
-      data: {
-        deletedAt: new Date(),
-      },
-    });
-
-    return res.status(200).json(result);
+      return res.status(200).json(result);
+    }
   }
 
   return res.status(404).json({ message: "Route not found" });

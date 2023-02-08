@@ -5,12 +5,12 @@ const prisma = new PrismaClient();
 export const getUserId = async (sessionToken: string): Promise<string> => {
   const userIdObj = await prisma.session.findUniqueOrThrow({
     where: {
-      sessionToken
+      sessionToken,
     },
     select: {
-      userId: true
-    }
-  })
+      userId: true,
+    },
+  });
 
-  return userIdObj['userId']
-}
+  return userIdObj["userId"];
+};

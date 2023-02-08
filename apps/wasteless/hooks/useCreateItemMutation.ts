@@ -3,7 +3,6 @@ import { ItemOutput } from "../types";
 import { axiosInstance } from "../lib/axiosInstance";
 import { queryKeys } from "../lib/react-query/constants";
 
-
 async function postItem(data: ItemOutput): Promise<void> {
   await axiosInstance.post<ItemOutput>("items/", data);
 }

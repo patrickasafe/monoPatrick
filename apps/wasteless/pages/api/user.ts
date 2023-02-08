@@ -10,11 +10,11 @@
 
 //   const { method } = req
 
-  // if (method === "GET") {
-  //   const user = await prisma.user.findUnique({
+// if (method === "GET") {
+//   const user = await prisma.user.findUnique({
 
-  //   });
+//   });
 
-  // }
-  
+// }
+
 // }

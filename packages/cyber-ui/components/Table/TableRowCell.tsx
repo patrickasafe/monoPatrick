@@ -11,7 +11,7 @@ interface Props<T> {
 }
 
 const TableCell = styled("td", {
-  padding: 12,
+  padding: "1px",
   fontSize: "1.25rem",
   color: "white",
 
@@ -19,7 +19,7 @@ const TableCell = styled("td", {
   verticalAlign: "middle",
   textAlign: "center",
 
-  "a, input, img, button": {
+  "a, input, img, button, span": {
     verticalAlign: "middle",
     display: "inline-block",
   },

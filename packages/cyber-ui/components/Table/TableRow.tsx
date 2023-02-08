@@ -35,8 +35,8 @@ export function TableRow<T>({
         <TableRowItem key={`table-body-${itemIndex}`}>
           {columns.map((column, columnIndex) => {
             const deleteRow = () => {
-              const deleteItemID = { id: item.id };
-              deleteMutate(deleteItemID);
+              const deleteItemId = { id: item.id };
+              deleteMutate(deleteItemId);
               let copy = [...data];
               copy = copy.filter((_item, index) => itemIndex != index);
               setTableData(copy);

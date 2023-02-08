@@ -12,13 +12,14 @@ export const BaseButton = styled("button", {
       },
     },
   },
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   border: 0,
   padding: "1rem",
   borderRadius: "16px",
 
   color: "$red10",
-
-  gap: "0.5rem",
 
   fontSize: "1.5rem",
   fontWeight: "bold",

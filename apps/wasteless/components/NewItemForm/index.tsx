@@ -1,11 +1,14 @@
 import React from "react";
 
 import { BaseButton, Input } from "cyber-ui";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import useCreateItemMutation from "../../hooks/useCreateItemMutation";
-import { NewItemFormData, newItemFormValidationSchema } from "./zodSchema";
+import {
+  NewItemFormData as FieldValues,
+  newItemFormValidationSchema,
+} from "./zodSchema";
 
 export const NewItemForm = () => {
   const mutate = useCreateItemMutation();
@@ -19,8 +22,8 @@ export const NewItemForm = () => {
     resolver: zodResolver(newItemFormValidationSchema),
   });
 
-  const handleCreateNewItem = (data: NewItemFormData) => {
-    const newItem: NewItemFormData = {
+  const handleCreateNewItem: SubmitHandler<FieldValues> = (data) => {
+    const newItem: FieldValues = {
       name: data.name,
       expiration: data.expiration,
     };
@@ -36,7 +39,7 @@ export const NewItemForm = () => {
       {errors.name?.message}
       <Input {...register("expiration")} type="date" />
       {errors.expiration?.message}
-      <BaseButton width={"fullWidth"}> Adicionar Produto</BaseButton>
+      <BaseButton width={"fullWidth"}>Adicionar Produto</BaseButton>
     </form>
   );
 };

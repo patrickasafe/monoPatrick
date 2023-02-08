@@ -8,14 +8,12 @@ import { NewItemForm } from "../NewItemForm";
 import useSoftDeleteItemMutation from "../../hooks/useSoftDeleteItemMutation";
 import { SocialButton } from "cyber-ui/components/SocialLogin/SignInWithButton";
 
-
 export const HomeBody = () => {
   const { data: session } = useSession();
   const [tableData, setTableData] = useItems();
   const deleteMutate = useSoftDeleteItemMutation();
 
   const router = useRouter();
-
 
   const handleClick = (e) => {
     e.preventDefault();
