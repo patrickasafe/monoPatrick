@@ -1,2 +1,3 @@
-export const baseUrl = "http://localhost:3000/api/";
+// eslint-disable-next-line turbo/no-undeclared-env-vars
+export const baseUrl = process.env.VERCEL_URL + "/api/";
 // export const baseImageUrl = `${baseUrl}/images`;
