@@ -1,12 +1,8 @@
-interface Props {
-  "next-auth.session-token": string;
-  "next-auth.csrf-token": string;
-  "next-auth.callback-url": string;
-  SID: string;
-}
+type Props = Partial<{
+  [key: string]: string;
+}>;
 
 export const getSessionToken = (cookie: Props) => {
   const sessionToken = cookie["next-auth.session-token"];
-
-  return sessionToken;
+  if (sessionToken) return sessionToken;
 };

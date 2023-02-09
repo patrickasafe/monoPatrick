@@ -5,7 +5,7 @@ import { styled } from "../../styles/stitches.config";
 
 import { TableHeader } from "./TableHeader";
 import { TableRow } from "./TableRow";
-import { ItemID } from "./types";
+import { ItemId } from "./types";
 
 export interface IColumnType<T> {
   key: string;
@@ -17,8 +17,8 @@ export interface IColumnType<T> {
 interface Props<T> {
   data: T[];
   columns: IColumnType<T>[];
-  setData: (value: SetStateAction<T>) => void;
-  deleteMutate: UseMutateFunction<void, unknown, ItemID, unknown>;
+  setData: (value: SetStateAction<T[]>) => void;
+  deleteMutate: UseMutateFunction<void, unknown, ItemId, unknown>;
 }
 
 const TableWrapper = styled("table", {

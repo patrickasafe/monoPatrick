@@ -1,7 +1,6 @@
-import { ItemInput, ItemTreated } from "../components/Homebody";
 import { Column } from "../types";
 
-export const dataFromAPIMock: ItemInput[] = [
+export const dataFromAPIMock = [
   {
     id: "01",
     name: "Bife acebolado",
@@ -22,7 +21,7 @@ export const dataFromAPIMock: ItemInput[] = [
   },
 ];
 
-export const dataFromAPIMockAfterTreatment: ItemTreated[] = [
+export const dataFromAPIMockAfterTreatment = [
   {
     id: "01",
     name: "Bife acebolado",

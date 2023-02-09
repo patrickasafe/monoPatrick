@@ -4,12 +4,13 @@ import { IColumnType } from ".";
 import { TableRowCell } from "./TableRowCell";
 import { SetStateAction } from "react";
 import { UseMutateFunction } from "react-query";
+import { ItemId } from "./types";
 
 interface Props<T> {
   data: T[];
   columns: IColumnType<T>[];
-  setData: (value: SetStateAction<T>) => void;
-  deleteMutate: UseMutateFunction<void, unknown, T, unknown>;
+  setData: (value: SetStateAction<T[]>) => void;
+  deleteMutate: UseMutateFunction<void, unknown, ItemId, unknown>;
 }
 
 const TableRowItem = styled("tr", {
@@ -35,6 +36,7 @@ export function TableRow<T>({
         <TableRowItem key={`table-body-${itemIndex}`}>
           {columns.map((column, columnIndex) => {
             const deleteRow = () => {
+// @ts-ignore
               const deleteItemId = { id: item.id };
               deleteMutate(deleteItemId);
               let copy = [...data];
@@ -47,7 +49,7 @@ export function TableRow<T>({
                 key={`table-row-cell-${columnIndex}`}
                 item={item}
                 column={column}
-                isLastChild={columnIndex + 1 === columns.length ? true : false}
+                isLastColumn={columnIndex + 1 === columns.length ? true : false}
                 deleteRow={deleteRow}
               />
             );

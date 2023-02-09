@@ -7,7 +7,9 @@ export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
+      // @ts-ignore
       clientId: process.env.GITHUB_ID,
+      // @ts-ignore
       clientSecret: process.env.GITHUB_SECRET,
       profile(profile) {
         return {
@@ -24,6 +26,7 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   callbacks: {
+    // @ts-ignore
     async session({ session, user }) {
       session.user.id = user.id;
       session.user.username = user.username;

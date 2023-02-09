@@ -13,7 +13,9 @@ export default async function handler(
   const { method } = req;
   const cookies = req.cookies;
   const sessionToken = getSessionToken(cookies);
+  //@ts-ignore TODO: FIX
   const ownerId = await getUserId(sessionToken);
+
 
   if (!sessionToken) {
     return res.status(401).send("Unauthorized");

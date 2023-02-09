@@ -6,7 +6,7 @@ import { DeleteButton } from "../Button";
 interface Props<T> {
   item: T;
   column: IColumnType<T>;
-  isLastChild: boolean;
+  isLastColumn: boolean;
   deleteRow: () => void;
 }
 
@@ -28,17 +28,20 @@ const TableCell = styled("td", {
 export function TableRowCell<T>({
   item,
   column,
-  isLastChild,
+  isLastColumn: isLastChild,
   deleteRow: deleteRowFN,
 }: Props<T>): JSX.Element {
   const handleOnClick = () => {
     deleteRowFN();
   };
+  // @ts-ignore
   const value = item[column.key];
   return (
     <TableCell>
-      {column.render ? column.render(column, item) : <span>{value}</span>}
-      {isLastChild && <DeleteButton onClick={handleOnClick} />}
+      <>
+        {column.render ? column.render(column, item) : <span>{value}</span>}
+        {isLastChild && <DeleteButton onClick={handleOnClick} />}
+      </>
     </TableCell>
   );
 }

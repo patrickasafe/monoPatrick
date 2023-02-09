@@ -2,23 +2,23 @@ import { UseMutateFunction, useMutation, useQueryClient } from "react-query";
 import { axiosInstance } from "../lib/axiosInstance";
 import { queryKeys } from "../lib/react-query/constants";
 
-type ItemID = {
+export type ItemId = {
   id: string;
 };
 
-async function deleteItem(data: ItemID): Promise<void> {
-  await axiosInstance.patch<ItemID>("items/", data);
+async function deleteItem(data: ItemId): Promise<void> {
+  await axiosInstance.patch<ItemId>("items/", data);
 }
 
 export default function useSoftDeleteItemMutation(): UseMutateFunction<
   void,
   unknown,
-  ItemID,
+  ItemId,
   unknown
 > {
   const queryClient = useQueryClient();
 
-  const { mutate } = useMutation((itemID: ItemID) => deleteItem(itemID), {
+  const { mutate } = useMutation((itemId: ItemId) => deleteItem(itemId), {
     onSuccess: () => {
       queryClient.invalidateQueries([queryKeys.items]);
       // showNotification({

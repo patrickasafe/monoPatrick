@@ -12,10 +12,6 @@ export interface ItemInput extends ItemOutput {
   createdAt: Date;
 }
 
-export type ItemTreated = {
-  id: string;
-  name: string;
-  expiration: string;
-  createdAt: string;
-  timeUntilExpire: string;
-};
+export type ItemTreated = Required<{
+  [keyof: string]: string;
+}>;

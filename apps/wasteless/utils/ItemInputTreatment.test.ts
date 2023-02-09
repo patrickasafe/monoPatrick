@@ -1,7 +1,7 @@
 import { cleanup } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import {
-  convertObjectsDatesPropertiesToStrings,
+  convertDatesPropertiesToStrings,
   itemsInputPayloadTreatment,
   timeUntilExpireCalculator,
 } from "./ItemInputTreatment";
@@ -73,8 +73,8 @@ describe("dateToString function test", () => {
       expiration: "01/10/2023",
       createdAt: "01/10/2023",
     };
-    expect(
-      convertObjectsDatesPropertiesToStrings(dataFromAPIMock[0])
-    ).toStrictEqual(fixtureDate);
+    expect(convertDatesPropertiesToStrings(dataFromAPIMock[0])).toStrictEqual(
+      fixtureDate
+    );
   });
 });

@@ -1,4 +1,4 @@
-import { ItemTreated } from "../components/Homebody";
+import { ItemTreated } from "../types";
 
 type ItemPayload = {
   id: string;
@@ -29,29 +29,31 @@ export const itemsInputPayloadTreatment = (
     }
 
     const temp1 = timeUntilExpireCalculator(element, todayDate);
-    return convertObjectsDatesPropertiesToStrings(temp1);
+    return convertDatesPropertiesToStrings(temp1);
   });
 };
 
-interface convertObjectsDatesPropertiesToStringsProps extends ItemPayload {}
+interface convertDatesPropertiesToStringsProps extends ItemPayload {}
 
 /**
  * This function iterates over the object and turn every Date property into a string using DD-MM-YY format.
  * @param  {[ItemPayload]} element
  * @return {[ItemTreated]} returns a new object without date properties.
  */
-export const convertObjectsDatesPropertiesToStrings = (
-  element: convertObjectsDatesPropertiesToStringsProps
+export const convertDatesPropertiesToStrings = (
+  element: convertDatesPropertiesToStringsProps
 ) => {
   const obj = {} as ItemTreated;
 
   for (let [key, value] of Object.entries(element)) {
     //validator if property is inherited
     if (!element.hasOwnProperty(key)) continue;
-    typeof value == typeof new Date()
-      ? //TODO: check this types below
-        (obj[key] = value.toLocaleDateString("pt-BR"))
-      : (obj[key] = value);
+
+    if (value instanceof Date) {
+      obj[key] = value.toLocaleDateString("pt-BR");
+    } else if (typeof value === "string") {
+      obj[key] = value;
+    }
   }
   return obj;
 };

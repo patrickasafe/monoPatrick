@@ -1,3 +1,3 @@
-export type ItemID = {
+export type ItemId = {
   id: string;
 };

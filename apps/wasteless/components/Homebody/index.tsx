@@ -1,16 +1,17 @@
-import { HomeContainer, Table } from "cyber-ui";
+import { HomeContainer } from "cyber-ui";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 import { SocialButton } from "cyber-ui/components/SocialLogin/SignInWithButton";
 import { RenderOnSession } from "../RenderOnSession";
+import { MouseEvent } from "react";
 
 export const HomeBody = () => {
   const { data: session } = useSession();
 
   const router = useRouter();
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent) => {
     e.preventDefault();
     router.push("login/");
   };
