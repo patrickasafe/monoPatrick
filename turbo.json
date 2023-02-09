@@ -3,6 +3,13 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
+      "env": [
+        "DATABASE_URL",
+        "GITHUB_ID",
+        "GITHUB_SECRET",
+        "NEXTAUTH_SECRET",
+        "NODE_ENV"
+      ],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
@@ -12,8 +19,7 @@
       "cache": false
     },
     "test": {
-      "outputs": [
-      ]
+      "outputs": []
     }
   }
 }
