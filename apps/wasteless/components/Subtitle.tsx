@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Subtitle = ({ subtitles }: Props) => {
-  const subtitle = subtitles[getRandomInt(12)];
+  const subtitle = subtitles[getRandomInt(10)];
 
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => {

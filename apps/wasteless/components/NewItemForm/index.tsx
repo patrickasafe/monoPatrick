@@ -8,12 +8,17 @@ import {
   NewItemFormData as FieldValues,
   newItemFormValidationSchema,
 } from "./zodSchema";
-import { NewItemInputsPlusButton } from "./NewItemInputsPlusButton";
+import { BaseButton, Input } from "cyber-ui";
 
 export const NewItemForm = () => {
   const mutate = useCreateItemMutation();
 
-  const { handleSubmit, reset } = useForm<FieldValues>({
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm<FieldValues>({
     resolver: zodResolver(newItemFormValidationSchema),
   });
 
@@ -30,7 +35,11 @@ export const NewItemForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleCreateNewItem)}>
-      <NewItemInputsPlusButton />
+      <Input {...register("name")} />
+      {errors.name?.message}
+      <Input {...register("expiration")} type="date" />
+      {errors.expiration?.message}
+      <BaseButton width={"fullWidth"}>Adicionar Produto</BaseButton>
     </form>
   );
 };
