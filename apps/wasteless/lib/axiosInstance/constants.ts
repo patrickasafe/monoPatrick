@@ -1,6 +1,6 @@
-const devBaseURL = "http://localhost:3000/api/";
+const testBaseURL = "http://localhost:3000/api/";
 
-const prodBaseURL = "http://mono-patrick-wasteless.vercel.app/api/";
+const devBaseURL = "http://mono-patrick-wasteless.vercel.app/api/";
 
 export const baseUrl: string =
-  process.env.NODE_ENV === "development" ? devBaseURL : prodBaseURL;
+  process.env.NODE_ENV === "test" ? testBaseURL : devBaseURL;
