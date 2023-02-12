@@ -11,7 +11,7 @@ export const Subtitle = ({ subtitles }: Props) => {
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => {
     setHydrated(true);
-  }, []);
+  }, [hydrated]);
 
   return (
     <>

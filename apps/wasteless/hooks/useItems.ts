@@ -19,13 +19,16 @@ export function useItems(): [
   React.Dispatch<React.SetStateAction<ItemTreated[]>>
 ] {
   const fallback: [] = [];
-  const { data = fallback } = useQuery(queryKeys.items, getItems);
+  const { data = fallback, status } = useQuery(queryKeys.items, getItems);
 
-  const [items, setItems] = useState(itemsInputPayloadTreatment(data));
+  const [items, setItems] = useState(itemsInputPayloadTreatment([]));
 
   useEffect(() => {
-    setItems(itemsInputPayloadTreatment(data));
-  }, [data]);
+    if (status === "success") {
+      const treatedData = itemsInputPayloadTreatment(data);
+      setItems(treatedData);
+    }
+  }, [data, status]);
 
   return [items, setItems];
 }

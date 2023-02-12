@@ -11,11 +11,11 @@ export const RenderOnSession = () => {
   const [tableData, setTableData] = useItems();
   const deleteMutate = useSoftDeleteItemMutation();
 
-  useEffect(() => {
-    if (session) {
-      // load and fetch data
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) {
+  //     // load and fetch data
+  //   }
+  // }, [session]);
 
   return (
     <>
