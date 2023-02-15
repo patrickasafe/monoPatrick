@@ -11,3 +11,5 @@ if (process.env.NEXTAUTH_URL === "production") {
   }
   prisma = global.prisma;
 }
+
+export default prisma;
