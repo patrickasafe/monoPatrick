@@ -7,7 +7,7 @@ import useSoftDeleteItemMutation from "../hooks/useSoftDeleteItemMutation";
 import { NewItemForm } from "./NewItemForm";
 
 export const RenderOnSession = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const [tableData, setTableData] = useItems();
   const deleteMutate = useSoftDeleteItemMutation();
 
