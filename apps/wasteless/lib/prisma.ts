@@ -1,14 +1,16 @@
 import { PrismaClient } from "@prisma/client";
-declare global {
-  var prisma: PrismaClient | undefined;
-}
+let prisma: PrismaClient;
 
+//@ts-ignore
 if (process.env.NEXTAUTH_URL === "production") {
   prisma = new PrismaClient();
 } else {
+  //@ts-ignore
   if (!global.prisma) {
+    //@ts-ignore
     global.prisma = new PrismaClient();
   }
+  //@ts-ignore
   prisma = global.prisma;
 }
 
