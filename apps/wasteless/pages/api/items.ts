@@ -3,8 +3,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSessionToken } from "../../lib/getSessionToken";
 import { getUserId } from "../../lib/getUserId";
 import { getItems } from "../../lib/items";
+import prisma from "../../lib/prisma";
 
-const prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
