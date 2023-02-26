@@ -1,17 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-let prisma: PrismaClient;
+import { PrismaClient } from '@prisma/client';
 
-//@ts-ignore
-if (process.env.NEXTAUTH_URL === "production") {
-  prisma = new PrismaClient();
-} else {
-  //@ts-ignore
-  if (!global.prisma) {
-    //@ts-ignore
-    global.prisma = new PrismaClient();
-  }
-  //@ts-ignore
-  prisma = global.prisma;
-}
+// Initialize Prisma client
+const prisma = new PrismaClient();
 
+// Export the Prisma client for use in other modules
 export default prisma;

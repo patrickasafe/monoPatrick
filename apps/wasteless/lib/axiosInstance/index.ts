@@ -11,5 +11,5 @@ import { baseUrl } from "./constants";
 //   return { Authorization: `Bearer ${user.token}` };
 // }
 
-const config: AxiosRequestConfig = { baseURL: baseUrl };
+const config: AxiosRequestConfig = { baseURL: baseUrl, timeout: 15000 };
 export const axiosInstance = axios.create(config);

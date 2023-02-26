@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { getUserId } from "./getUserId";
+import prisma from "./prisma";
 
-const prisma = new PrismaClient();
 
 export async function getItems(sessionToken: string) {
   const ownerId = await getUserId(sessionToken);
