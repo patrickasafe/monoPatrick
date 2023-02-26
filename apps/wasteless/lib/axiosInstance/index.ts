@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 // import { User } from '../../../shared/types';
-import { baseUrl } from "./constants";
+import { baseURL } from "./constants";
 
 // interface jwtHeader {
 //   Authorization?: string;
@@ -11,5 +11,5 @@ import { baseUrl } from "./constants";
 //   return { Authorization: `Bearer ${user.token}` };
 // }
 
-const config: AxiosRequestConfig = { baseURL: baseUrl, timeout: 15000 };
+const config: AxiosRequestConfig = { baseURL: baseURL, timeout: 15000 };
 export const axiosInstance = axios.create(config);
