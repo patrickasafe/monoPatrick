@@ -7,7 +7,11 @@ export type ItemId = {
 };
 
 async function deleteItem(data: ItemId): Promise<void> {
-  await axiosInstance.patch<ItemId>("items/", data);
+  try {
+    await axiosInstance.patch<ItemId>("items/", data);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export default function useSoftDeleteItemMutation(): UseMutateFunction<
@@ -24,7 +28,7 @@ export default function useSoftDeleteItemMutation(): UseMutateFunction<
       // showNotification({
       //   enabled: true,
       //   type: toast.TYPE.SUCCESS,
-      //   message: "Sucessfully created a product"
+      //   message: "Successfully created a product"
       // });
     },
   });

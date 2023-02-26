@@ -7,8 +7,12 @@ import { ItemInput, ItemTreated } from "../types";
 import { itemsInputPayloadTreatment } from "../utils/ItemInputTreatment";
 
 async function getItems(): Promise<ItemInput[] | void> {
-  const { data } = await axiosInstance.get("items/");
-  return data;
+  try {
+    const { data } = await axiosInstance.get("items/");
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 // interface of payload
