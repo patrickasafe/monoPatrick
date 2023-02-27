@@ -2,8 +2,7 @@ import { getUserId } from "./getUserId";
 import prisma from "./prisma";
 
 
-export async function getItems(sessionToken: string) {
-  const ownerId = await getUserId(sessionToken);
+export async function getItems(ownerId: string) {
 
   const items = await prisma.item.findMany({
     where: {

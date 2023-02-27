@@ -10,7 +10,7 @@
         "NEXTAUTH_SECRET",
         "NODE_ENV",
         "NEXTAUTH_URL",
-        "NEXT_API_URL"
+        "NEXT_PUBLIC_API_URL"
       ],
       "outputs": ["dist/**", ".next/**"]
     },
